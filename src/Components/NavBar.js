@@ -71,10 +71,12 @@ const Container = styled.div`
   height: 70px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #b4b8bb;
+  border-bottom: 2px solid black;
   justify-content: space-between;
-  
-
+  position:sticky;
+  top:0;
+  z-index: 2;
+  background-color:white
 `;
 
 const Logo = styled.button`

@@ -38,7 +38,7 @@ border: none;
 border-radius: 3px;
 padding: 5px 10px;
 color: white;
-margin: 5px;
+margin: 30px 10px 5px;
 cursor: pointer;
 `
 const Electronics= styled(All)``;

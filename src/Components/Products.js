@@ -5,10 +5,12 @@ import styled from "styled-components";
 
 function Home() {
   const dispatch = useDispatch();
-  const { filterd } = useSelector((state) => state.products);
+  const { filterd ,status} = useSelector((state) => state.products);
 
   return (
-    <Grid>
+    <div>
+   { status ? ('Loading.....') :
+    (<Grid>
       {
       filterd.map((item) => (
         <Containt
@@ -22,8 +24,12 @@ function Home() {
           id={item.id}
         />
       ))}
-    </Grid>
+    </Grid>)
+}
+    </div>
+  
   );
+
 }
 
 export default Home;

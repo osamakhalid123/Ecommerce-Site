@@ -11,14 +11,14 @@ export const ProductsFetch = createAsyncThunk(
     }
 )
 
-// ${/category/jewelery}
 
 const initialState = {
     items: [],
     cart: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
     cartTotalQuantity: 0,
     cartTotalAmount: 0,
-    filterd:[]
+    filterd:[],
+    status:null,
 };
 
 const ProductsSlice = createSlice({
@@ -106,6 +106,7 @@ const ProductsSlice = createSlice({
         },
         ClearCart:(state, action)=>{
             state.cart=[];
+            localStorage.setItem('cartItems', JSON.stringify([]))
         },
 
         getTotals(state, action) {
@@ -132,16 +133,16 @@ const ProductsSlice = createSlice({
     extraReducers: {
 
         [ProductsFetch.pending]: (state, action) => {
-            state.status = 'pending';
+            state.status = true;
         },
         [ProductsFetch.fulfilled]: (state, action) => {
-            state.status = 'success';
+            state.status = false;
             state.items = action.payload;
             state.filterd= action.payload
         },
 
         [ProductsFetch.rejected]: (state, action) => {
-            state.status = 'rejected';
+            state.status = false;
         }
 
 

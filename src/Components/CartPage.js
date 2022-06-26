@@ -34,7 +34,7 @@ function CartPage() {
 
       <Totals>
         <p>Total Amount: ${cartTotalAmount}</p>
-        <p>total Quantity={cartTotalQuantity}</p>
+        <p>total Quantity = {cartTotalQuantity}</p>
       </Totals>
       <TopLabels>
         <p>Product</p>
@@ -48,7 +48,7 @@ function CartPage() {
             <Image src={cart.image} alt="#" />
             <Titel>{cart.title}</Titel>
 
-            <div>
+            <QuantuityWraper>
               <DecreaseBtn
                 onClick={() => {
                   dispatch(decrease(cart));
@@ -65,7 +65,7 @@ function CartPage() {
               >
                 <AddIcon />
               </IncreaseBtn>
-            </div>
+            </QuantuityWraper>
             <Price>${cart.price}</Price>
             <RemoveBtn
               onClick={() => {
@@ -89,12 +89,32 @@ export default CartPage;
 const HomeButton=styled.button`
     background-color: transparent;
     border: none;
-    position: relative;
-right:40%;
+    position: absolute;
+left:5%;
 font-size: 20px;
 font-weight:bold;
 cursor: pointer;
-    
+align-items:center ;
+`
+
+const ClearButton = styled.button`
+    margin: 0 auto;
+  background-color: black;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+  margin: 5px;
+  cursor: pointer;
+    position: absolute;
+right:5%;
+align-items:center ;
+`;
+
+const QuantuityWraper=styled.div`
+display:flex ;
+align-items:center ;
+justify-content:center ;
 `
 
 const DecreaseBtn = styled.button`
@@ -117,10 +137,7 @@ const RemoveBtn = styled(DecreaseBtn)`
 `;
 
 
-const ClearButton = styled(DecreaseBtn)`
-    position: relative;
-left:40%;
-`;
+
 
 const Quantuity = styled.span`
   margin: 5px;
@@ -129,11 +146,15 @@ const Quantuity = styled.span`
 const Totals = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   margin: 2rem;
+  align-items:center ;
+  justify-content:space-around ;
+  position:relative ;
+  top:4rem;
   p {
+
     text-transform: capitalize;
-    font-size: 1.5rem;
+    width:auto;
     font-weight: bold;
     background-color: black;
     color: white;
@@ -142,15 +163,24 @@ const Totals = styled.div`
   }
 `;
 
-const CartItemsWraper = styled.div``;
+const CartItemsWraper = styled.div`
+`
 const TopLabels = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin-bottom: 1.5rem;
+  
+  margin: 1.5rem 0;
+  width:auto ;
+  height:auto;
+  display:flex ;
+  justify-content:space-around; 
+
   p {
+    margin: 6rem 0 1.5rem 0;
+
     text-transform: UpperCase;
     font-size: 1.4rem;
     font-weight: bold;
+    align-items:center ;
+  justify-content:center ;
   }
 `;
 const Wrap = styled.div`
@@ -161,7 +191,8 @@ const Wrap = styled.div`
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  height: 100px;
+  height: auto;
+  padding:20px;
 
 `;
 const Price = styled.p`

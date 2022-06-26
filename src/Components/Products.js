@@ -37,8 +37,8 @@ export default Home;
 const Grid = styled.div`
   display: grid;
   margin-top: 2rem;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fit,minmax(0,auto));
   gap:5px;
   align-items:center;
   text-align:center;

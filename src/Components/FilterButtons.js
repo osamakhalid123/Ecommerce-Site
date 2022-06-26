@@ -10,7 +10,7 @@ function FilterButtons() {
   return (
 
     // ["electronics","jewelery","men's clothing","women's clothing"]
-    <div>
+    <Wraper>
        <All onClick={() =>{
         dispatch(ShowProducts())
       }}>Show All</All>
@@ -26,12 +26,18 @@ function FilterButtons() {
         <Womens onClick={() =>{
         dispatch(filters("women's clothing"))
       }}>Women's clothing</Womens>
-    </div>
+    </Wraper>
   )
 }
 
 export default FilterButtons
 
+const Wraper = styled.div`
+
+  display:flex ;
+  text-align:center ;
+  justify-content:center ;
+`
 const All= styled.button` margin: 0 auto;
 background-color: black;
 border: none;
